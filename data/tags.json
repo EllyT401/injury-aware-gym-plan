@@ -1,0 +1,91 @@
+{
+  "_about": "DRAFT movement and body-area tags, with the everyday words that map to each one. Exercises (Stage 2) will carry the same tags, so a restriction like 'no deep knee bend' can be matched against exercises. Same wildcard rules as redflags.json: * at the end of a word matches any ending. Review and edit these with your physio.",
+  "version": 1,
+  "tags": [
+    {
+      "id": "knee_bending",
+      "label": "Knee bending",
+      "keywords": ["knee bend*", "bend* my knee*", "bend* the knee*", "deep knee*", "knee flexion", "squat*", "lung*", "kneel*", "step up*", "step down*"]
+    },
+    {
+      "id": "hip_bending",
+      "label": "Deep hip bending",
+      "keywords": ["hip flexion", "deep hip*", "hip bend*", "bend* at the hip*", "hip hinge*", "hinge*", "deadlift*"]
+    },
+    {
+      "id": "spinal_loading",
+      "label": "Spinal loading (weight through the spine)",
+      "keywords": ["spinal load*", "load* my spine", "load* on my spine", "axial load*", "back squat*", "deadlift*", "weight on my back", "bar on my back", "compress* my spine", "compression of the spine"]
+    },
+    {
+      "id": "spinal_flexion",
+      "label": "Forward bending / rounding the back",
+      "keywords": ["bend* forward", "forward bend*", "forward flexion", "round* my back", "rounded back", "crunch*", "sit up*", "situp*", "toe touch*"]
+    },
+    {
+      "id": "spinal_rotation",
+      "label": "Twisting / rotation",
+      "keywords": ["twist*", "rotat*"]
+    },
+    {
+      "id": "overhead_reach",
+      "label": "Overhead reach",
+      "keywords": ["overhead", "over head", "above my head", "above head", "above shoulder*", "above the shoulder*", "reach* up", "raise* my arm*", "lift* my arm*"]
+    },
+    {
+      "id": "pushing_pressing",
+      "label": "Pushing / pressing",
+      "keywords": ["push*", "press", "presses", "pressing", "bench", "dip", "dips"]
+    },
+    {
+      "id": "pulling",
+      "label": "Pulling / rowing",
+      "keywords": ["pull*", "row", "rows", "rowing", "chin up*", "chinup*", "pulldown*"]
+    },
+    {
+      "id": "impact",
+      "label": "Impact (jumping, running, landing)",
+      "keywords": ["impact", "jump*", "hop", "hops", "hopping", "run", "runs", "running", "sprint*", "plyo*", "landing", "skipping", "bounc*"]
+    },
+    {
+      "id": "heavy_gripping",
+      "label": "Heavy gripping",
+      "keywords": ["grip*", "grasp*", "carry*", "hang*", "heavy gripping"]
+    },
+    {
+      "id": "wrist_loading",
+      "label": "Weight through the wrists",
+      "keywords": ["wrist*", "palms down", "on my hands", "weight through my hands"]
+    },
+    {
+      "id": "elbow_loading",
+      "label": "Elbow loading",
+      "keywords": ["elbow*", "tennis elbow", "golfers elbow", "tricep*", "bicep*"]
+    },
+    {
+      "id": "ankle_loading",
+      "label": "Ankle / calf / Achilles loading",
+      "keywords": ["ankle*", "calf raise*", "heel raise*", "achilles", "plantar", "on my toes", "tip toe*", "tiptoe*"]
+    },
+    {
+      "id": "neck_strain",
+      "label": "Neck strain",
+      "keywords": ["neck*", "shrug*", "head forward"]
+    },
+    {
+      "id": "lying_prone",
+      "label": "Lying face down",
+      "keywords": ["lying on my front", "lie on my front", "face down", "prone", "on my stomach", "on my belly"]
+    },
+    {
+      "id": "single_leg_balance",
+      "label": "Single-leg balance",
+      "keywords": ["single leg", "one leg", "balanc*", "unilateral"]
+    },
+    {
+      "id": "heavy_loading",
+      "label": "Heavy weights",
+      "keywords": ["heavy weight*", "heavy load*", "heavy lifting", "lift* heavy", "lifting heavy", "go heavy", "going heavy", "max lift*", "one rep max", "1rm"]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety tests</title>
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    table { border-collapse: collapse; width: 100%; font-size: var(--fs-small); }
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .pass { color: var(--ok); font-weight: 700; }
+    .fail { color: var(--danger); font-weight: 700; }
+    .summary { padding: 12px 16px; border-radius: 8px; font-weight: 700; margin: 16px 0; }
+    .summary.ok { background: var(--ok-soft); color: var(--ok); }
+    .summary.bad { background: var(--danger-soft); color: var(--danger); }
+  </style>
+</head>
+<body>
+  <main class="main" style="max-width: 900px">
+    <h1>Safety tests</h1>
+    <p class="muted">Runs the urgent-symptom checker and the keyword-to-tag mapping against the sentences in <code>tests/cases.js</code>. Every row should say PASS.</p>
+    <div id="summary" class="summary">Running...</div>
+    <table>
+      <thead><tr><th>Result</th><th>Check</th><th>Text</th><th>Got</th><th>Expected</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </main>
+
+  <script type="module">
+    import { compileRules, checkText } from "../js/safety/redflags.js";
+    import { compileTags, mapText } from "../js/tags.js";
+    import { safetyCases, tagCases } from "./cases.js";
+
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const rowsEl = document.getElementById("rows");
+    const summaryEl = document.getElementById("summary");
+
+    try {
+      const [flags, tagData] = await Promise.all([
+        fetch("../data/redflags.json").then((r) => r.json()),
+        fetch("../data/tags.json").then((r) => r.json()),
+      ]);
+      const rules = compileRules(flags);
+      const tags = compileTags(tagData);
+      let failed = 0;
+      let total = 0;
+
+      const addRow = (ok, kind, text, got, want) => {
+        total++;
+        if (!ok) failed++;
+        rowsEl.insertAdjacentHTML("beforeend",
+          `<tr><td class="${ok ? "pass" : "fail"}">${ok ? "PASS" : "FAIL"}</td><td>${esc(kind)}</td><td>${esc(text) || "<em>(empty)</em>"}</td><td>${esc(got)}</td><td>${esc(want)}</td></tr>`);
+      };
+
+      for (const c of safetyCases) {
+        const r = checkText(c.text, rules, { strict: !!c.strict });
+        addRow(r.level === c.level, c.strict ? "red flag (self-diagnosing)" : "red flag", c.text, r.level, c.level);
+      }
+      for (const c of tagCases) {
+        const r = mapText(c.text, tags);
+        const got = [...new Set(r.mapped.flatMap((m) => m.tags))].sort().join(", ") || "(none, ask user)";
+        const want = [...c.tags].sort().join(", ") || "(none, ask user)";
+        addRow(got === want, "tag mapping", c.text, got, want);
+      }
+
+      summaryEl.textContent = failed ? `${failed} of ${total} FAILED` : `All ${total} checks passed`;
+      summaryEl.className = "summary " + (failed ? "bad" : "ok");
+    } catch (e) {
+      summaryEl.textContent = "Could not run tests: " + e.message + " (open this page through the local server, not by double-clicking the file)";
+      summaryEl.className = "summary bad";
+    }
+  </script>
+</body>
+</html>

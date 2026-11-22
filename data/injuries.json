@@ -1,0 +1,32 @@
+{
+  "_about": "DRAFT pick lists for setup. Each injury or restriction lists the tags (see tags.json) it should avoid. The injury tag lists are a cautious starting point only: the physio's own restrictions always win and should be added alongside. Review with your physio.",
+  "version": 1,
+  "injuries": [
+    { "id": "knee", "label": "Knee pain or injury", "tags": ["knee_bending", "impact"] },
+    { "id": "lower_back", "label": "Lower back pain", "tags": ["spinal_loading", "spinal_flexion", "spinal_rotation", "heavy_loading"] },
+    { "id": "upper_back", "label": "Upper back or ribs", "tags": ["spinal_rotation", "pulling", "overhead_reach"] },
+    { "id": "shoulder", "label": "Shoulder pain or impingement", "tags": ["overhead_reach", "pushing_pressing"] },
+    { "id": "neck", "label": "Neck pain", "tags": ["neck_strain", "overhead_reach"] },
+    { "id": "hip", "label": "Hip pain", "tags": ["hip_bending", "impact", "single_leg_balance"] },
+    { "id": "hamstring_groin", "label": "Hamstring or groin strain", "tags": ["hip_bending", "impact", "heavy_loading"] },
+    { "id": "ankle_achilles", "label": "Ankle sprain or Achilles", "tags": ["ankle_loading", "impact", "single_leg_balance"] },
+    { "id": "elbow", "label": "Elbow (tennis or golfer's elbow)", "tags": ["elbow_loading", "heavy_gripping", "pulling"] },
+    { "id": "wrist_hand", "label": "Wrist or hand", "tags": ["wrist_loading", "heavy_gripping", "pushing_pressing"] }
+  ],
+  "restrictions": [
+    { "id": "no_deep_knee", "label": "No deep knee bending", "tags": ["knee_bending"] },
+    { "id": "no_deep_hip", "label": "No deep hip bending", "tags": ["hip_bending"] },
+    { "id": "no_spinal_load", "label": "No weight through the spine", "tags": ["spinal_loading"] },
+    { "id": "no_forward_bend", "label": "No forward bending or rounding the back", "tags": ["spinal_flexion"] },
+    { "id": "no_twisting", "label": "No twisting", "tags": ["spinal_rotation"] },
+    { "id": "no_overhead", "label": "No overhead reaching", "tags": ["overhead_reach"] },
+    { "id": "no_pushing", "label": "No pushing or pressing", "tags": ["pushing_pressing"] },
+    { "id": "no_pulling", "label": "No pulling or rowing", "tags": ["pulling"] },
+    { "id": "no_impact", "label": "No impact (jumping, running)", "tags": ["impact"] },
+    { "id": "no_gripping", "label": "No heavy gripping", "tags": ["heavy_gripping"] },
+    { "id": "no_wrist_load", "label": "No weight through the wrists", "tags": ["wrist_loading"] },
+    { "id": "no_single_leg", "label": "No single-leg balance work", "tags": ["single_leg_balance"] },
+    { "id": "no_prone", "label": "No lying face down", "tags": ["lying_prone"] },
+    { "id": "no_heavy", "label": "No heavy weights", "tags": ["heavy_loading"] }
+  ]
+}

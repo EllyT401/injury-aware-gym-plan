@@ -1,0 +1,108 @@
+/* ==========================================================================
+   DESIGN TOKENS - the one place to restyle the whole app.
+   Change colours, fonts, spacing and sizes here and everything follows.
+   ========================================================================== */
+
+:root {
+  /* ---- Fonts ---- */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: var(--font-body);
+
+  /* ---- Text size (the Settings text-size option changes --text-scale) ---- */
+  --text-scale: 1;
+  --fs-small: calc(0.875rem * var(--text-scale));
+  --fs-base: calc(1rem * var(--text-scale));
+  --fs-large: calc(1.125rem * var(--text-scale));
+  --fs-h2: calc(1.375rem * var(--text-scale));
+  --fs-h1: calc(1.75rem * var(--text-scale));
+  --lh-body: 1.5;
+
+  /* ---- Spacing scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* ---- Shape and size ---- */
+  --radius: 12px;
+  --radius-small: 8px;
+  --tap-size: 48px;          /* minimum tap target */
+  --content-width: 640px;
+  --tabbar-height: 64px;
+  --border-width: 1px;
+
+  /* ---- Colours: light theme (default) ---- */
+  --bg: #f6f9fa;
+  --surface: #ffffff;
+  --surface-2: #eef3f5;
+  --text: #1b2a30;
+  --text-muted: #52656d;
+  --border: #d3dde1;
+
+  --accent: #1b6b7b;          /* the one main accent colour */
+  --accent-contrast: #ffffff; /* text on top of the accent */
+  --accent-soft: #e0f0f3;
+
+  /* Status colours (used for green / amber / red exercise tags later) */
+  --ok: #1d7a45;
+  --ok-soft: #e2f4ea;
+  --warn: #8a5600;
+  --warn-soft: #fff0d1;
+  --danger: #b3261e;
+  --danger-soft: #fde8e6;
+
+  --focus: #0b57d0;
+  --shadow: 0 1px 2px rgba(20, 40, 50, 0.08);
+}
+
+/* ---- Dark theme: follows the phone unless the user picked light ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a1e;
+    --surface: #17252a;
+    --surface-2: #1f3036;
+    --text: #e8f0f2;
+    --text-muted: #a6b8be;
+    --border: #2d4047;
+    --accent: #62b8ca;
+    --accent-contrast: #072229;
+    --accent-soft: #1b3942;
+    --ok: #6fd09a;
+    --ok-soft: #173424;
+    --warn: #f0b95a;
+    --warn-soft: #3a2c10;
+    --danger: #ff8f86;
+    --danger-soft: #3d1b19;
+    --focus: #8ab4f8;
+    --shadow: none;
+  }
+}
+
+/* ---- Dark theme: user picked dark ---- */
+:root[data-theme="dark"] {
+  --bg: #0f1a1e;
+  --surface: #17252a;
+  --surface-2: #1f3036;
+  --text: #e8f0f2;
+  --text-muted: #a6b8be;
+  --border: #2d4047;
+  --accent: #62b8ca;
+  --accent-contrast: #072229;
+  --accent-soft: #1b3942;
+  --ok: #6fd09a;
+  --ok-soft: #173424;
+  --warn: #f0b95a;
+  --warn-soft: #3a2c10;
+  --danger: #ff8f86;
+  --danger-soft: #3d1b19;
+  --focus: #8ab4f8;
+  --shadow: none;
+}
+
+/* ---- Text size choices from Settings ---- */
+:root[data-textsize="small"] { --text-scale: 0.9; }
+:root[data-textsize="medium"] { --text-scale: 1; }
+:root[data-textsize="large"] { --text-scale: 1.2; }
